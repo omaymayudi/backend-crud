@@ -62,10 +62,7 @@ export const Me = async (req, res) => {
       uuid: req.session.userId,
     },
   });
-  return res.status(200).json({
-    msg: "Success",
-    data: user,
-  });
+  return res.status(200).json(user);
 
   if (!user) {
     return res.status(404).json({
