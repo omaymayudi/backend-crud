@@ -19,7 +19,7 @@ const User = db.define(
       allowNull: false,
       unique: {
         args: true,
-        msg: "Email already in use",
+        msg: "nama sudah ada",
       },
       validate: {
         notEmpty: true,
@@ -29,10 +29,10 @@ const User = db.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: {
-        args: true,
-        msg: "Email already in use",
-      },
+      // unique: {
+      //   args: true,
+      //   msg: "Email already in use",
+      // },
       validate: {
         notEmpty: true,
         isEmail: true,
