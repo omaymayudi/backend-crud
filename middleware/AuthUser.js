@@ -42,4 +42,5 @@ export const AdminOnly = async (req, res, next) => {
       msg: "not have access",
     });
   }
+  next();
 };

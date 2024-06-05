@@ -6,10 +6,7 @@ export const getUsers = async (req, res) => {
     const Users = await User.findAll({
       attributes: ["uuid", "name", "email", "role"],
     });
-    res.status(200).json({
-      status: "success",
-      data: Users,
-    });
+    res.status(200).json(Users);
   } catch (error) {
     res.status(500).json({
       status: "fail",
@@ -30,7 +27,7 @@ export const getUserById = async (req, res) => {
     });
     res.status(200).json({
       status: "success",
-      data: Users,
+      Users,
     });
   } catch (error) {
     console.log(error);
@@ -47,7 +44,7 @@ export const createUser = async (req, res) => {
   if (password !== confrmPassword) {
     return res.status(400).json({
       status: "fail",
-      message: "Passwords do not match",
+      msg: "Passwords do not match",
     });
   }
   const hashPassword = await argon2.hash(password);
@@ -61,12 +58,12 @@ export const createUser = async (req, res) => {
     });
     res.status(201).json({
       status: "success",
-      message: "Register success",
+      msg: "Register success",
     });
   } catch (error) {
     res.status(500).json({
       status: "fail",
-      message: error,
+      msg: error,
       error: "server Error",
     });
   }
